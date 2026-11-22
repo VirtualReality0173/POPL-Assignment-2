@@ -82,3 +82,11 @@ main :-
     format("Ben = [~w, ~w, ~w]~n",   [D2, L2, P2]),
     format("Carla = [~w, ~w, ~w]~n", [D3, L3, P3]),
     format("Dana = [~w, ~w, ~w]~n",  [D4, L4, P4]).
+
+
+% count_solutions(+Active, -N)
+% N is the number of candidate assignments that satisfy every clue in Active.
+count_solutions(Active, N) :-
+    findall(S, ( candidate_solution(S),
+                 satisfies_clues(Active, S) ), Solutions),
+    length(Solutions, N).
