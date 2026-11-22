@@ -94,7 +94,7 @@
   (display (list (tree-height tree)
                  (leaf-count tree)))
   (newline))
-  
+
 (provide inorder
          preorder
          postorder
@@ -103,3 +103,6 @@
          print-inorder
          print-all-traversals
          print-height-and-leaves)
+
+
+
