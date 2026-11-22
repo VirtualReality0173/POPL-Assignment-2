@@ -18,3 +18,11 @@ count_solutions([5], N) - 3456.
 count_solutions([6], N) - 7776
 count_solutions([7], N) - 5184.
 count_solutions([8], N) - 2592.
+
+
+P1.c
+
+Clue 9: The person working on the AI project belongs to the testing department.
+
+count_solutions([1,2,3,4,5,6,7,8,9], N) - 1
+
