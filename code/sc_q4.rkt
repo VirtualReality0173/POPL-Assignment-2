@@ -27,3 +27,20 @@
       '()
       (cons (f (car lst))
             (my-map f (cdr lst)))))
+
+;; list-item?: #t if e is a list (a pair or the empty list), #f if e is an atom.
+(define (list-item? e)
+  (or (pair? e) (null? e)))
+
+(define (insert-if-short x lst n)
+  (let ((processed
+         ;; Recurse into sublists; atoms are left unchanged.
+         (my-map (lambda (e)
+                   (if (list-item? e)
+                       (insert-if-short x e n)
+                       e))
+                 lst)))
+    ;; Length is measured on lst (the original), not on processed.
+    (if (< (my-length lst) n)
+        (cons x processed)
+        processed)))

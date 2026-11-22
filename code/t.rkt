@@ -18,4 +18,13 @@
     (if (null? rest)
         count
         (loop (cdr rest) (+ count 1)))))
-(display (my-length '(1 2 3)))
+
+;; my-map: apply the one-argument function f to every element of lst,
+;; returning a new list in the same order.
+;; Racket grows its stack on the heap, so 10,000 elements is fine.
+(define (my-map f lst)
+  (if (null? lst)
+      '()
+      (cons (f (car lst))
+            (my-map f (cdr lst)))))
+(display (my-map (lambda (x) (+ x 1)) '(1 2 3)))
