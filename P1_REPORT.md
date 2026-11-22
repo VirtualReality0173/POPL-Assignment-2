@@ -19,6 +19,7 @@ count_solutions([6], N) - 7776
 count_solutions([7], N) - 5184.
 count_solutions([8], N) - 2592.
 
+We observe that there are 3 possible unique solutions for all the 8 clues given.
 
 P1.c
 
