@@ -44,3 +44,10 @@
     (if (< (my-length lst) n)
         (cons x processed)
         processed)))
+
+(define (print-insert-result)
+  (let* ((x (read))
+         (lst (read))
+         (n (read)))
+    (display (insert-if-short x lst n))
+    (newline)))
