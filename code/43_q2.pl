@@ -167,3 +167,33 @@ op_prec('/', 2).
 
 
 
+% ==================================================
+% P2.b - Generate all valid equations
+% ==================================================
+
+% all_equations(+List, -Equations)
+% Returns all valid equations, without duplicates,
+% sorted using standard Prolog term order.
+
+all_equations(List, Equations) :-
+    findall(
+        Equation,
+        (
+            equation_tree(List, LeftTree, RightTree),
+            tree_string(LeftTree, LeftStr),
+            tree_string(RightTree, RightStr),
+            format(string(Equation), "~w=~w",
+                   [LeftStr, RightStr])
+        ),
+        Unsorted
+    ),
+    sort(Unsorted, Equations).
+
+
+% count_equations(+List, -N)
+% Returns the number of distinct valid equations.
+
+count_equations(List, N) :-
+    all_equations(List, Equations),
+    length(Equations, N).
+
