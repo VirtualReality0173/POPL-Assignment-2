@@ -66,3 +66,19 @@ satisfies_clues([], _Solution).
 satisfies_clues([N|Rest], Solution) :-
     clue(N, Solution),
     satisfies_clues(Rest, Solution).
+
+
+
+% main/0
+% Selects the first candidate satisfying clues 1-8 and prints one line per friend.
+main :-
+    once(( candidate_solution(Solution),
+           satisfies_clues([1,2,3,4,5,6,7,8], Solution) )),
+    Solution = [ p('Alex',  D1, L1, P1),
+                 p('Ben',   D2, L2, P2),
+                 p('Carla', D3, L3, P3),
+                 p('Dana',  D4, L4, P4) ],
+    format("Alex = [~w, ~w, ~w]~n",  [D1, L1, P1]),
+    format("Ben = [~w, ~w, ~w]~n",   [D2, L2, P2]),
+    format("Carla = [~w, ~w, ~w]~n", [D3, L3, P3]),
+    format("Dana = [~w, ~w, ~w]~n",  [D4, L4, P4]).
