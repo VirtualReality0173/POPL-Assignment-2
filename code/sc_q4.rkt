@@ -10,3 +10,20 @@
 ;;   insert-if-short     - insert x at the front of every short list, at every level
 ;;   print-insert-result - read x, lst, n from stdin and display the result
 ;;   make-inserter       - build an inserter from x and a length predicate
+
+;; my-length: number of top-level elements of lst.
+;; Tail-recursive with an accumulator, so a 10,000-element list is no problem.
+(define (my-length lst)
+  (let loop ((rest lst) (count 0))
+    (if (null? rest)
+        count
+        (loop (cdr rest) (+ count 1)))))
+
+;; my-map: apply the one-argument function f to every element of lst,
+;; returning a new list in the same order.
+;; Racket grows its stack on the heap, so 10,000 elements is fine.
+(define (my-map f lst)
+  (if (null? lst)
+      '()
+      (cons (f (car lst))
+            (my-map f (cdr lst)))))
