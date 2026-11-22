@@ -59,6 +59,10 @@ clue(8, Solution) :-
     member(p(_, research, Lang, data), Solution),
     Lang \== javascript.
 
+% CLUE 9: The person working on the AI project belongs to the testing department.
+clue(9, Solution) :-
+    member(p(_, testing, _, 'AI'), Solution).
+
 % satisfies_clues(+Active, +Solution)
 % Succeeds iff every clue number in Active holds for Solution.
 % Clues not listed in Active are not checked. An empty list always succeeds.
